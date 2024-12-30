@@ -1,4 +1,4 @@
 class API {
   static const ip = "****blurred****";
-  static const hostConnect = "****blurred****";
+  static const hostConnect = "https://$ip.nip.io:8443";
 }
