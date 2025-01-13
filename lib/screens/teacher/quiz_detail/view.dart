@@ -7,11 +7,7 @@ import 'package:ormee_mvp/designs/OrmeeProblemCard.dart';
 import 'package:ormee_mvp/designs/OrmeeSnackbar.dart';
 import 'package:ormee_mvp/designs/OrmeeTypo.dart';
 import 'package:ormee_mvp/screens/teacher/header/view.dart';
-import 'package:ormee_mvp/screens/teacher/main/view.dart';
-import 'package:ormee_mvp/screens/teacher/quiz_create/view.dart';
 import 'package:ormee_mvp/screens/teacher/quiz_detail/view_model.dart';
-
-import '../sidemenu/view.dart';
 
 class QuizDetail extends StatelessWidget {
   QuizDetailController controller = Get.put(QuizDetailController());
@@ -26,7 +22,7 @@ class QuizDetail extends StatelessWidget {
     controller.fetchQuizDetail(quizId!);
     return Container(
       color: OrmeeColor.grey[5],
-      padding: EdgeInsets.symmetric(horizontal: 50),
+      padding: const EdgeInsets.symmetric(horizontal: 50),
       child: Scaffold(
         backgroundColor: OrmeeColor.grey[5],
         appBar: TeacherHeader(),
@@ -38,23 +34,29 @@ class QuizDetail extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    GestureDetector(
-                      onTap: () => Get.toNamed('/teacher/quiz',
-                          arguments: {'isUpdate': true}),
-                      child: MouseRegion(
-                        cursor: SystemMouseCursors.click,
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 12),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: OrmeeColor.purple[40]!),
-                          ),
-                          child: Headline1_Semibold(
-                              text: '수정하기', color: OrmeeColor.purple[40]),
-                        ),
-                      ),
-                    ),
+                    Obx(() {
+                      return (controller.quiz.value?.opened ?? true)
+                          ? const SizedBox()
+                          : GestureDetector(
+                              onTap: () => Get.toNamed('/teacher/quiz',
+                                  arguments: {'isUpdate': true}),
+                              child: MouseRegion(
+                                cursor: SystemMouseCursors.click,
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 12),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                        color: OrmeeColor.purple[40]!),
+                                  ),
+                                  child: Headline1_Semibold(
+                                      text: '수정하기',
+                                      color: OrmeeColor.purple[40]),
+                                ),
+                              ),
+                            );
+                    }),
                     const SizedBox(
                       width: 20,
                     ),
