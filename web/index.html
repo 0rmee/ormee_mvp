@@ -33,6 +33,25 @@
   <title>ormee_mvp</title>
   <link rel="manifest" href="manifest.json">
 
+  <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js"></script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCoJ45ukyHEATU-Ob75cuxxbfySC3ztQ70",
+      authDomain: "ormee-mvp.firebaseapp.com",
+      projectId: "ormee-mvp",
+      storageBucket: "ormee-mvp.firebasestorage.app",
+      messagingSenderId: "796053018584",
+      appId: "1:796053018584:web:c5e2fac52820b4992ac4ad",
+      measurementId: "G-N69LVJW67P"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
   <!-- <script>
     window.flutterWebRenderer = "html";
   </script> -->

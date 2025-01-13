@@ -1,3 +1,5 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -17,6 +19,17 @@ import 'package:flutter_web_plugins/url_strategy.dart';
 void main() async {
   usePathUrlStrategy();
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+        apiKey: "AIzaSyCoJ45ukyHEATU-Ob75cuxxbfySC3ztQ70",
+        authDomain: "ormee-mvp.firebaseapp.com",
+        projectId: "ormee-mvp",
+        storageBucket: "ormee-mvp.firebasestorage.app",
+        messagingSenderId: "796053018584",
+        appId: "1:796053018584:web:c5e2fac52820b4992ac4ad",
+        measurementId: "G-N69LVJW67P"
+    )
+  );
   await GetStorage.init();
   Get.put(LectureListController());
   Get.put(TeacherHomeController());
@@ -25,6 +38,8 @@ void main() async {
 
 class OrmeeApp extends StatelessWidget {
   const OrmeeApp({super.key});
+  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
 
   @override
   Widget build(BuildContext context) {
