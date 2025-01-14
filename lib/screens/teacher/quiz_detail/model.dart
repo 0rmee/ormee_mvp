@@ -1,11 +1,13 @@
 class QuizDetail {
   DateTime dueTime;
   int timeLimit;
+  bool opened;
   List<ProblemDetail> problems;
 
   QuizDetail({
     required this.dueTime,
     required this.timeLimit,
+    required this.opened,
     required this.problems
   });
 
@@ -13,6 +15,7 @@ class QuizDetail {
     return QuizDetail(
       dueTime: DateTime.parse(data['dueTime']),
       timeLimit: data['timeLimit'],
+      opened: data['opened'],
       problems: data['problems'] != null
           ? List<ProblemDetail>.from(
         data['problems'].map((problem) => ProblemDetail.fromJson(problem)),
