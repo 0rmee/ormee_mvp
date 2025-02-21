@@ -4,7 +4,8 @@ import 'package:ormee_mvp/screens/teacher/quiz_create/model.dart';
 
 class QuizCreateService extends GetConnect {
   QuizCreateService() {
-    httpClient.baseUrl = API.hostConnect;
+    final api = API();
+    httpClient.baseUrl = '${api.hostConnect}';
     httpClient.timeout = const Duration(seconds: 10);
 
     httpClient.addRequestModifier<dynamic>((request) async {
@@ -14,12 +15,13 @@ class QuizCreateService extends GetConnect {
     });
   }
 
-  Future<void> createQuiz(Map<String, dynamic> quizData, String lectureId) async {
+  Future<void> createQuiz(
+      Map<String, dynamic> quizData, String lectureId) async {
     final String url = '/quizes/teacher/$lectureId';
     try {
       final response = await post(url, quizData);
 
-      if(response.isOk && response.body != null) {
+      if (response.isOk && response.body != null) {
         final body = response.body;
 
         if (body['status'] == 'success') {
@@ -40,7 +42,7 @@ class QuizCreateService extends GetConnect {
     try {
       final response = await put(url, quizData);
 
-      if(response.isOk && response.body != null) {
+      if (response.isOk && response.body != null) {
         final body = response.body;
 
         if (body['status'] == 'success') {
@@ -62,7 +64,7 @@ class QuizCreateService extends GetConnect {
     try {
       final response = await get(url);
 
-      if(response.isOk && response.body != null) {
+      if (response.isOk && response.body != null) {
         final body = response.body;
 
         if (body['status'] == 'success') {

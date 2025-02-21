@@ -3,7 +3,8 @@ import 'package:ormee_mvp/api/OrmeeApi.dart';
 
 class TeacherSignInService extends GetConnect {
   TeacherSignInService() {
-    httpClient.baseUrl = API.hostConnect;
+    final api = API();
+    httpClient.baseUrl = '${api.hostConnect}';
     httpClient.timeout = const Duration(seconds: 10);
 
     httpClient.addRequestModifier<dynamic>((request) async {
@@ -18,7 +19,7 @@ class TeacherSignInService extends GetConnect {
     try {
       final response = await post(url, teacherData);
 
-      if(response.isOk && response.body != null) {
+      if (response.isOk && response.body != null) {
         final body = response.body;
 
         if (body['status'] == 'success') {

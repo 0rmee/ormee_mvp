@@ -5,7 +5,8 @@ import 'package:ormee_mvp/screens/lecture_detail/model.dart';
 class LectureService extends GetConnect {
   LectureService() {
     // 기본 URL 및 타임아웃 설정
-    httpClient.baseUrl = '${API.hostConnect}';
+    final api = API();
+    httpClient.baseUrl = '${api.hostConnect}';
     httpClient.timeout = const Duration(seconds: 10);
 
     // 요청 인터셉터: 헤더 설정 및 요청 로깅
