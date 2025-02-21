@@ -6,7 +6,8 @@ import 'package:ormee_mvp/screens/teacher/home/model.dart';
 
 class TeacherLectureCreateService extends GetConnect {
   TeacherLectureCreateService() {
-    httpClient.baseUrl = '${API.hostConnect}';
+    final api = API();
+    httpClient.baseUrl = '${api.hostConnect}';
     httpClient.timeout = const Duration(seconds: 10);
 
     httpClient.addRequestModifier<dynamic>((request) async {
