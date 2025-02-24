@@ -4,7 +4,8 @@ import 'package:ormee_mvp/screens/teacher/quiz_detail/model.dart';
 
 class QuizDetailService extends GetConnect {
   QuizDetailService() {
-    httpClient.baseUrl = API.hostConnect;
+    final api = API();
+    httpClient.baseUrl = '${api.hostConnect}';
     httpClient.timeout = const Duration(seconds: 10);
 
     httpClient.addRequestModifier<dynamic>((request) async {
@@ -29,7 +30,7 @@ class QuizDetailService extends GetConnect {
     final String url = '/quizes/teacher/$quizId';
     final response = await delete(url);
 
-    if(response.statusCode == 200) {
+    if (response.statusCode == 200) {
       return true;
     } else {
       throw Exception('Failed to delete quizzes');

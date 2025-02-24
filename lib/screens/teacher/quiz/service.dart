@@ -5,7 +5,8 @@ import 'package:ormee_mvp/screens/teacher/quiz/model.dart';
 
 class TeacherQuizService extends GetConnect {
   TeacherQuizService() {
-    httpClient.baseUrl = '${API.hostConnect}';
+    final api = API();
+    httpClient.baseUrl = '${api.hostConnect}';
     httpClient.timeout = const Duration(seconds: 10);
 
     httpClient.addRequestModifier<dynamic>((request) async {
@@ -82,7 +83,8 @@ class TeacherQuizService extends GetConnect {
 
 class ProblemStatisticsService extends GetConnect {
   ProblemStatisticsService() {
-    httpClient.baseUrl = '${API.hostConnect}';
+    final api = API();
+    httpClient.baseUrl = '${api.hostConnect}';
     httpClient.timeout = const Duration(seconds: 10);
 
     httpClient.addRequestModifier<dynamic>((request) async {

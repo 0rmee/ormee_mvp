@@ -15,21 +15,22 @@ import 'package:ormee_mvp/screens/teacher/quiz_detail/view.dart';
 import 'package:ormee_mvp/screens/teacher/sidemenu/view_model.dart';
 import 'package:ormee_mvp/screens/teacher/sign_in/view.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
+  await dotenv.load(fileName: ".env");
   usePathUrlStrategy();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: const FirebaseOptions(
-        apiKey: "AIzaSyCoJ45ukyHEATU-Ob75cuxxbfySC3ztQ70",
-        authDomain: "ormee-mvp.firebaseapp.com",
-        projectId: "ormee-mvp",
-        storageBucket: "ormee-mvp.firebasestorage.app",
-        messagingSenderId: "796053018584",
-        appId: "1:796053018584:web:c5e2fac52820b4992ac4ad",
-        measurementId: "G-N69LVJW67P"
-    )
-  );
+      options: FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_API_KEY'] ?? '',
+    authDomain: dotenv.env['FIREBASE_AUTH_DOMAIN'] ?? '',
+    projectId: dotenv.env['FIREBASE_PROJECT_ID'] ?? '',
+    storageBucket: dotenv.env['FIREBASE_STORAGE_BUCKET'] ?? '',
+    messagingSenderId: dotenv.env['FIREBASE_MESSAGING_SENDER_ID'] ?? '',
+    appId: dotenv.env['FIREBASE_APP_ID'] ?? '',
+    measurementId: dotenv.env['FIREBASE_MEASUREMENT_ID'] ?? '',
+  ));
   await GetStorage.init();
   Get.put(LectureListController());
   Get.put(TeacherHomeController());
@@ -39,7 +40,8 @@ void main() async {
 class OrmeeApp extends StatelessWidget {
   const OrmeeApp({super.key});
   static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
-  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
+  static FirebaseAnalyticsObserver observer =
+      FirebaseAnalyticsObserver(analytics: analytics);
 
   @override
   Widget build(BuildContext context) {
