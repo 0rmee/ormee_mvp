@@ -3,8 +3,7 @@ import 'package:ormee_mvp/api/OrmeeApi.dart';
 
 class QuizAuthService extends GetConnect {
   QuizAuthService() {
-    final api = API();
-    httpClient.baseUrl = '${api.hostConnect}';
+    httpClient.baseUrl = API.hostConnect;
     httpClient.timeout = const Duration(seconds: 10);
 
     // 요청 인터셉터: 헤더 설정 및 요청 로깅
