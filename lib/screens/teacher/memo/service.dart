@@ -6,8 +6,7 @@ import 'package:ormee_mvp/screens/teacher/memo/model.dart';
 
 class TeacherMemoService extends GetConnect {
   TeacherMemoService() {
-    final api = API();
-    httpClient.baseUrl = '${api.hostConnect}';
+    httpClient.baseUrl = API.hostConnect;
     httpClient.timeout = const Duration(seconds: 10);
 
     httpClient.addRequestModifier<dynamic>((request) async {
@@ -62,8 +61,7 @@ class TeacherMemoService extends GetConnect {
 
 class MessageStatisticsService extends GetConnect {
   MessageStatisticsService() {
-    final api = API();
-    httpClient.baseUrl = '${api.hostConnect}';
+    httpClient.baseUrl = API.hostConnect;
     httpClient.timeout = const Duration(seconds: 10);
 
     httpClient.addRequestModifier<dynamic>((request) async {
