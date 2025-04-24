@@ -122,7 +122,7 @@ class TeacherSideMenu extends StatelessWidget {
                 color: OrmeeColor.grey[10],
                 image: DecorationImage(
                   image: controller2.teacherUser.value!.image.isEmpty
-                      ? AssetImage('/images/user-profile-03.png')
+                      ? const AssetImage('/assets/images/peeroreum_logo.png')
                       : NetworkImage(controller2.teacherUser.value!.image)
                           as ImageProvider,
                   fit: BoxFit.cover,
