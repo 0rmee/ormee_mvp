@@ -120,11 +120,12 @@ class TeacherSideMenu extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: OrmeeColor.grey[10],
-                image: DecorationImage(
-                  image: controller2.teacherUser.value!.image.isEmpty
-                      ? const AssetImage('/assets/images/peeroreum_logo.png')
-                      : NetworkImage(controller2.teacherUser.value!.image)
-                          as ImageProvider,
+                image: const DecorationImage(
+                  // image: controller2.teacherUser.value!.image.isEmpty
+                  //     ? const AssetImage('assets/images/peeroreum_logo.png')
+                  //     : NetworkImage(controller2.teacherUser.value!.image)
+                  //         as ImageProvider,
+                  image: AssetImage('assets/images/peeroreum_logo.png'),
                   fit: BoxFit.cover,
                 ),
               ),
