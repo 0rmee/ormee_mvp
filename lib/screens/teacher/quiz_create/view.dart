@@ -880,11 +880,9 @@ class _QuizcreateState extends State<Quizcreate> {
   }
 
   inputAnswer(int index) {
-    final TextEditingController controller =
-        TextEditingController(text: quizCreateController.answers[index]);
     return IntrinsicWidth(
       child: TextField(
-        controller: controller,
+        controller: quizCreateController.answersControllers[index],
         maxLength: 50,
         decoration: InputDecoration(
             hintText: '입력',
@@ -901,7 +899,7 @@ class _QuizcreateState extends State<Quizcreate> {
           fontWeight: FontWeight.w600,
           color: OrmeeColor.purple[40],
         ),
-        onSubmitted: (value) {
+        onChanged: (value) {
           quizCreateController.answers[index] = value;
         },
       ),

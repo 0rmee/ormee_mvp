@@ -24,6 +24,7 @@ class QuizCreateController extends GetxController {
   var optionFocusNodes = <List<FocusNode>>[].obs;
 
   var problemControllers = <TextEditingController>[].obs;
+  var answersControllers = <TextEditingController>[].obs;
   var optionControllers = <List<TextEditingController>>[].obs;
 
   @override
@@ -71,6 +72,7 @@ class QuizCreateController extends GetxController {
       layerLinks.clear();
       problemControllers.clear();
       optionControllers.clear();
+      answersControllers.clear();
       problemFocusNodes.clear();
       optionFocusNodes.clear();
 
@@ -83,6 +85,7 @@ class QuizCreateController extends GetxController {
 
         problemControllers.add(TextEditingController(text: problem.content));
         optionControllers.add(problem.items.map((item) => TextEditingController(text: item)).toList());
+        answersControllers.add(TextEditingController(text: problem.answer));
         problemFocusNodes.add(FocusNode());
         optionFocusNodes.add(problem.items.map((_) => FocusNode()).toList());
 
@@ -97,7 +100,6 @@ class QuizCreateController extends GetxController {
     } finally {
       isLoading(false);
     }
-
   }
   
   void addProblem() {
@@ -110,6 +112,7 @@ class QuizCreateController extends GetxController {
     optionControllers.add([]);
     problemFocusNodes.add(FocusNode());
     optionFocusNodes.add([]);
+    answersControllers.add(TextEditingController());
     addOption(problems.length-1);
   }
 
@@ -123,6 +126,7 @@ class QuizCreateController extends GetxController {
     optionControllers.removeAt(index);
     problemFocusNodes.removeAt(index);
     optionFocusNodes.removeAt(index);
+    answersControllers.removeAt(index);
   }
 
   void addOption(int problemIndex) {
@@ -150,6 +154,9 @@ class QuizCreateController extends GetxController {
       focusNode.dispose();
     }
     for (final controller in problemControllers) {
+      controller.dispose();
+    }
+    for (final controller in answersControllers) {
       controller.dispose();
     }
     for (final focusNodeList in optionFocusNodes) {
