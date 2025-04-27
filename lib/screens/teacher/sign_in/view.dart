@@ -27,7 +27,7 @@ class TeacherSignIn extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                width: 160,
+                height: 30,
                 child: Image.asset(
                   'assets/images/ormee_logo.png',
                 ),
