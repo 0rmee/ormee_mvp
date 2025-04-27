@@ -29,12 +29,12 @@ class TeacherSignIn extends StatelessWidget {
               SizedBox(
                 width: 160,
                 child: Image.asset(
-                  'assets/images/sign_in_logo.png',
+                  'assets/images/ormee_logo.png',
                 ),
               ),
               const SizedBox(height: 28),
               Heading2_Semibold(
-                  text: '편리하고 간편한 원생 관리 솔루션', color: OrmeeColor.grey[40]),
+                  text: '체계적인 수업 관리 서비스 오르미', color: OrmeeColor.grey[70]),
               const SizedBox(height: 44),
               TextFormField(
                 controller: controller.codeController,

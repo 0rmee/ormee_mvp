@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:ormee_mvp/designs/OrmeeColor.dart';
 import 'package:ormee_mvp/designs/OrmeeSearchbar.dart';
 import 'package:ormee_mvp/screens/teacher/header/view_model.dart';
-import 'package:ormee_mvp/screens/teacher/main/view.dart';
 
 class TeacherHeader extends StatelessWidget implements PreferredSizeWidget {
   TeacherHeader({super.key});
@@ -27,6 +26,7 @@ class TeacherHeader extends StatelessWidget implements PreferredSizeWidget {
               onTap: () => Get.offAllNamed('teacher/main'),
               child: SvgPicture.asset(
                 'assets/icons/logo.svg',
+                height: 20,
               ),
             ),
             const Spacer(),
